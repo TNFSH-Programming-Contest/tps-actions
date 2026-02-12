@@ -45,6 +45,9 @@ for pro in problems:
         if file.startswith(prefix):
             flags['tests'][pro] = True
             flags['solutions'][pro] = True
+            if not os.path.exists('p{}/tests'.format(pro)):
+                flags['input'][pro] = True
+                print('Set tests,input/{} to true due to {} (no tests directory)'.format(pro, file))
             print('Set tests,solutions/{} to true due to {}'.format(pro, file))
             break
 
